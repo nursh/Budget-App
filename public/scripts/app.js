@@ -29,23 +29,31 @@ var template = React.createElement(
   )
 );
 
+var user = {
+  name: 'Lord Phantomhive',
+  age: '1000',
+  location: 'London, England'
+};
+
 var templateTwo = React.createElement(
   'div',
   null,
   React.createElement(
     'h1',
     null,
-    'Nuradeen Sheikh'
+    user.name
   ),
   React.createElement(
     'p',
     null,
-    'Age: 23'
+    'Age: ',
+    user.age
   ),
   React.createElement(
     'p',
     null,
-    'Location: Ottawa, Canada'
+    'Location: ',
+    user.location
   )
 );
 var app = document.getElementById('app');

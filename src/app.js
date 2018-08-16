@@ -9,11 +9,17 @@ const template = (
   </div>
 );
 
+const user = {
+  name: 'Lord Phantomhive',
+  age: '1000',
+  location: 'London, England',
+};
+
 const templateTwo = (
   <div>
-    <h1>Nuradeen Sheikh</h1>
-    <p>Age: 23</p>
-    <p>Location: Ottawa, Canada</p>
+    <h1>{user.name}</h1>
+    <p>Age: {user.age}</p>
+    <p>Location: {user.location}</p>
   </div>
 );
 const app = document.getElementById('app');
