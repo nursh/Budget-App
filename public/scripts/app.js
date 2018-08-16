@@ -1,4 +1,10 @@
-const template = <p>This is a JSX render</p>;
-const app = document.getElementById('app');
+'use strict';
+
+var template = React.createElement(
+  'p',
+  null,
+  'This is a JSX render'
+);
+var app = document.getElementById('app');
 
 ReactDOM.render(template, app);

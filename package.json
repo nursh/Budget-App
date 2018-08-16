@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "compile": "babel "
+    "build": "babel src -d public/scripts"
   },
   "author": "nur-sh",
   "license": "ISC",
