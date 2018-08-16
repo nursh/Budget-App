@@ -1,17 +1,22 @@
 'use strict';
 
+var app = {
+  title: 'Indecision App',
+  subtitle: 'Put your life in the hands of a computer'
+};
+
 var template = React.createElement(
   'div',
   null,
   React.createElement(
     'h1',
     null,
-    'Indecision App'
+    app.title
   ),
   React.createElement(
     'p',
     null,
-    'Something Something'
+    app.subtitle
   ),
   React.createElement(
     'ol',
@@ -56,6 +61,6 @@ var templateTwo = React.createElement(
     user.location
   )
 );
-var app = document.getElementById('app');
 
-ReactDOM.render(templateTwo, app);
+var appRoot = document.getElementById('app');
+ReactDOM.render(template, appRoot);
