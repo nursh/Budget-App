@@ -40,13 +40,26 @@ var user = {
   location: 'London, England'
 };
 
+var getLocation = function getLocation(_ref) {
+  var location = _ref.location;
+
+  if (location) {
+    return React.createElement(
+      'p',
+      null,
+      'Location: ',
+      location
+    );
+  }
+};
+
 var templateTwo = React.createElement(
   'div',
   null,
   React.createElement(
     'h1',
     null,
-    user.name
+    user.name ? user.name : 'Anonymous'
   ),
   React.createElement(
     'p',
@@ -54,13 +67,8 @@ var templateTwo = React.createElement(
     'Age: ',
     user.age
   ),
-  React.createElement(
-    'p',
-    null,
-    'Location: ',
-    user.location
-  )
+  getLocation(user)
 );
 
 var appRoot = document.getElementById('app');
-ReactDOM.render(template, appRoot);
+ReactDOM.render(templateTwo, appRoot);
