@@ -27,12 +27,16 @@ const renderTemplate = () => {
       { app.subtitle && <p>{app.subtitle}</p> }
       <p>{ app.options.length > 0 ? 'Here are your options:': 'No options' }</p>
       <p>{app.options.length}</p>
-
+      <button onClick={clearAllOptions}>clear options</button>
+      <ol>
+        {
+          app.options.map(option => <li key={option}>{option}</li>)
+        }
+      </ol>
       <form onSubmit={onFormSubmit}>
         <input type="text" name="option" />
         <button>Submit</button>
       </form>
-      <button onClick={clearAllOptions}>clear options</button>
     </div>
   );
 

@@ -47,6 +47,22 @@ var renderTemplate = function renderTemplate() {
       app.options.length
     ),
     React.createElement(
+      'button',
+      { onClick: clearAllOptions },
+      'clear options'
+    ),
+    React.createElement(
+      'ol',
+      null,
+      app.options.map(function (option) {
+        return React.createElement(
+          'li',
+          { key: option },
+          option
+        );
+      })
+    ),
+    React.createElement(
       'form',
       { onSubmit: onFormSubmit },
       React.createElement('input', { type: 'text', name: 'option' }),
@@ -55,11 +71,6 @@ var renderTemplate = function renderTemplate() {
         null,
         'Submit'
       )
-    ),
-    React.createElement(
-      'button',
-      { onClick: clearAllOptions },
-      'clear options'
     )
   );
 
