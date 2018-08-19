@@ -1,6 +1,5 @@
 let hideDetails = true;
 
-
 const onShowDetails = () => {
   hideDetails = !hideDetails;
   visibleComponent();
