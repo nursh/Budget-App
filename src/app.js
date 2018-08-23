@@ -1,6 +1,19 @@
 const { Component } = React;
 const { render } = ReactDOM;
 
+class IndecisionApp extends Component {
+  render() {
+    return (
+      <div>
+        <Header />
+        <Action />
+        <Options />
+        <AddOption />
+      </div>
+    );
+  }
+}
+
 class Header extends Component {
   render() {
     return (
@@ -27,6 +40,17 @@ class Options extends Component {
     return (
       <div>
         <p>Options component here</p>
+        <Option />
+      </div>
+    );
+  }
+}
+
+class Option extends Component {
+  render() {
+    return (
+      <div>
+        Option goes here
       </div>
     );
   }
@@ -42,13 +66,5 @@ class AddOption extends Component {
   }
 }
 
-const jsx = (
-  <div>
-    <Header />
-    <Action />
-    <Options />
-    <AddOption />
-  </div>
 
-);
-render(jsx, document.getElementById('app'));
+render(<IndecisionApp />, document.getElementById('app'));

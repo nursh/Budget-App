@@ -13,8 +13,34 @@ var _React = React,
 var _ReactDOM = ReactDOM,
     render = _ReactDOM.render;
 
-var Header = function (_Component) {
-  _inherits(Header, _Component);
+var IndecisionApp = function (_Component) {
+  _inherits(IndecisionApp, _Component);
+
+  function IndecisionApp() {
+    _classCallCheck(this, IndecisionApp);
+
+    return _possibleConstructorReturn(this, (IndecisionApp.__proto__ || Object.getPrototypeOf(IndecisionApp)).apply(this, arguments));
+  }
+
+  _createClass(IndecisionApp, [{
+    key: 'render',
+    value: function render() {
+      return React.createElement(
+        'div',
+        null,
+        React.createElement(Header, null),
+        React.createElement(Action, null),
+        React.createElement(Options, null),
+        React.createElement(AddOption, null)
+      );
+    }
+  }]);
+
+  return IndecisionApp;
+}(Component);
+
+var Header = function (_Component2) {
+  _inherits(Header, _Component2);
 
   function Header() {
     _classCallCheck(this, Header);
@@ -45,8 +71,8 @@ var Header = function (_Component) {
   return Header;
 }(Component);
 
-var Action = function (_Component2) {
-  _inherits(Action, _Component2);
+var Action = function (_Component3) {
+  _inherits(Action, _Component3);
 
   function Action() {
     _classCallCheck(this, Action);
@@ -72,8 +98,8 @@ var Action = function (_Component2) {
   return Action;
 }(Component);
 
-var Options = function (_Component3) {
-  _inherits(Options, _Component3);
+var Options = function (_Component4) {
+  _inherits(Options, _Component4);
 
   function Options() {
     _classCallCheck(this, Options);
@@ -91,7 +117,8 @@ var Options = function (_Component3) {
           'p',
           null,
           'Options component here'
-        )
+        ),
+        React.createElement(Option, null)
       );
     }
   }]);
@@ -99,8 +126,31 @@ var Options = function (_Component3) {
   return Options;
 }(Component);
 
-var AddOption = function (_Component4) {
-  _inherits(AddOption, _Component4);
+var Option = function (_Component5) {
+  _inherits(Option, _Component5);
+
+  function Option() {
+    _classCallCheck(this, Option);
+
+    return _possibleConstructorReturn(this, (Option.__proto__ || Object.getPrototypeOf(Option)).apply(this, arguments));
+  }
+
+  _createClass(Option, [{
+    key: 'render',
+    value: function render() {
+      return React.createElement(
+        'div',
+        null,
+        'Option goes here'
+      );
+    }
+  }]);
+
+  return Option;
+}(Component);
+
+var AddOption = function (_Component6) {
+  _inherits(AddOption, _Component6);
 
   function AddOption() {
     _classCallCheck(this, AddOption);
@@ -126,12 +176,4 @@ var AddOption = function (_Component4) {
   return AddOption;
 }(Component);
 
-var jsx = React.createElement(
-  'div',
-  null,
-  React.createElement(Header, null),
-  React.createElement(Action, null),
-  React.createElement(Options, null),
-  React.createElement(AddOption, null)
-);
-render(jsx, document.getElementById('app'));
+render(React.createElement(IndecisionApp, null), document.getElementById('app'));
