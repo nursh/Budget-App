@@ -88,6 +88,11 @@ var Action = function (_Component3) {
   }
 
   _createClass(Action, [{
+    key: 'handlePick',
+    value: function handlePick() {
+      alert('Handle pick button clicked!!!');
+    }
+  }, {
     key: 'render',
     value: function render() {
       return React.createElement(
@@ -95,7 +100,7 @@ var Action = function (_Component3) {
         null,
         React.createElement(
           'button',
-          null,
+          { onClick: this.handlePick },
           'What should I do?'
         )
       );
@@ -115,6 +120,11 @@ var Options = function (_Component4) {
   }
 
   _createClass(Options, [{
+    key: 'handleRemoveAll',
+    value: function handleRemoveAll() {
+      alert('Removing all options!!!');
+    }
+  }, {
     key: 'render',
     value: function render() {
       var options = this.props.options;
@@ -122,6 +132,11 @@ var Options = function (_Component4) {
       return React.createElement(
         'div',
         null,
+        React.createElement(
+          'button',
+          { onClick: this.handleRemoveAll },
+          'Remove all'
+        ),
         options.map(function (option) {
           return React.createElement(Option, { key: option, option: option });
         })
@@ -171,15 +186,27 @@ var AddOption = function (_Component6) {
   }
 
   _createClass(AddOption, [{
+    key: 'handleAddOption',
+    value: function handleAddOption(evt) {
+      evt.preventDefault();
+      var option = evt.target.elements.option.value.trim();
+      if (option) alert(option);
+    }
+  }, {
     key: 'render',
     value: function render() {
       return React.createElement(
         'div',
         null,
         React.createElement(
-          'p',
-          null,
-          'AddOption Component here'
+          'form',
+          { onSubmit: this.handleAddOption },
+          React.createElement('input', { type: 'text', placeholder: 'Add option', name: 'option' }),
+          React.createElement(
+            'button',
+            null,
+            'Add option'
+          )
         )
       );
     }
