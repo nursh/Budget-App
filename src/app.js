@@ -3,11 +3,14 @@ const { render } = ReactDOM;
 
 class IndecisionApp extends Component {
   render() {
+    const title = 'Indecision App';
+    const subtitle = 'Put your hands in the life of a computer';
+    const options = ['uno', 'dos', 'tres'];
     return (
       <div>
-        <Header />
+        <Header title={title} subtitle={subtitle} />
         <Action />
-        <Options />
+        <Options options={options} />
         <AddOption />
       </div>
     );
@@ -16,10 +19,11 @@ class IndecisionApp extends Component {
 
 class Header extends Component {
   render() {
+    const { title, subtitle } = this.props;
     return (
       <div>
-        <h1>Indecision App</h1>
-        <h2>Put your hands in the life of a computer</h2>
+        <h1>{title}</h1>
+        <h2>{subtitle}</h2>
       </div>
     );
   }
@@ -37,10 +41,10 @@ class Action extends Component {
 
 class Options extends Component {
   render() {
+    const { options } = this.props;
     return (
       <div>
-        <p>Options component here</p>
-        <Option />
+        { options.map(option => <Option key={option} option={option}/>) }
       </div>
     );
   }
@@ -48,9 +52,10 @@ class Options extends Component {
 
 class Option extends Component {
   render() {
+    const { option } = this.props;
     return (
       <div>
-        Option goes here
+        <p>{option}</p>
       </div>
     );
   }
