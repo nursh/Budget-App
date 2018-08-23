@@ -46,7 +46,7 @@ class Action extends Component {
 
 class Options extends Component {
 
-  handleRemoveAll() {
+  handleRemoveAll = () => {
     alert('Removing all options!!!');
   }
 

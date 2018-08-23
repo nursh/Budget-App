@@ -114,17 +114,22 @@ var Options = function (_Component4) {
   _inherits(Options, _Component4);
 
   function Options() {
+    var _ref;
+
+    var _temp, _this4, _ret;
+
     _classCallCheck(this, Options);
 
-    return _possibleConstructorReturn(this, (Options.__proto__ || Object.getPrototypeOf(Options)).apply(this, arguments));
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this4 = _possibleConstructorReturn(this, (_ref = Options.__proto__ || Object.getPrototypeOf(Options)).call.apply(_ref, [this].concat(args))), _this4), _this4.handleRemoveAll = function () {
+      alert('Removing all options!!!');
+    }, _temp), _possibleConstructorReturn(_this4, _ret);
   }
 
   _createClass(Options, [{
-    key: 'handleRemoveAll',
-    value: function handleRemoveAll() {
-      alert('Removing all options!!!');
-    }
-  }, {
     key: 'render',
     value: function render() {
       var options = this.props.options;
