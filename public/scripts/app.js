@@ -33,6 +33,12 @@ var IndecisionApp = function (_Component) {
       _this.setState(function () {
         return { options: [] };
       });
+    }, _this.handlePick = function () {
+      var options = _this.state.options;
+
+      var randomNum = Math.floor(Math.random() * options.length);
+      var option = options[randomNum];
+      alert(option);
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
@@ -47,7 +53,10 @@ var IndecisionApp = function (_Component) {
         'div',
         null,
         React.createElement(Header, { title: title, subtitle: subtitle }),
-        React.createElement(Action, { hasOptions: options.length > 0 }),
+        React.createElement(Action, {
+          hasOptions: options.length > 0,
+          handlePick: this.handlePick
+        }),
         React.createElement(Options, {
           options: options,
           handleDeleteOptions: this.handleDeleteOptions
@@ -106,14 +115,11 @@ var Action = function (_Component3) {
   }
 
   _createClass(Action, [{
-    key: 'handlePick',
-    value: function handlePick() {
-      alert('Handle pick button clicked!!!');
-    }
-  }, {
     key: 'render',
     value: function render() {
-      var hasOptions = this.props.hasOptions;
+      var _props2 = this.props,
+          hasOptions = _props2.hasOptions,
+          handlePick = _props2.handlePick;
 
       return React.createElement(
         'div',
@@ -121,7 +127,7 @@ var Action = function (_Component3) {
         React.createElement(
           'button',
           {
-            onClick: this.handlePick,
+            onClick: handlePick,
             disabled: !hasOptions
           },
           'What should I do?'
@@ -145,9 +151,9 @@ var Options = function (_Component4) {
   _createClass(Options, [{
     key: 'render',
     value: function render() {
-      var _props2 = this.props,
-          options = _props2.options,
-          handleDeleteOptions = _props2.handleDeleteOptions;
+      var _props3 = this.props,
+          options = _props3.options,
+          handleDeleteOptions = _props3.handleDeleteOptions;
 
       return React.createElement(
         'div',

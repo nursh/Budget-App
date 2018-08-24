@@ -10,6 +10,13 @@ class IndecisionApp extends Component {
     this.setState(() => ({ options: [] }));
   }
 
+  handlePick = () => {
+    const { options } = this.state;
+    const randomNum = Math.floor(Math.random() * options.length);
+    const option = options[randomNum];
+    alert(option);
+  }
+
   render() {
     const title = 'Indecision App';
     const subtitle = 'Put your hands in the life of a computer';
@@ -17,7 +24,10 @@ class IndecisionApp extends Component {
     return (
       <div>
         <Header title={title} subtitle={subtitle} />
-        <Action hasOptions={options.length > 0} />
+        <Action
+          hasOptions={options.length > 0} 
+          handlePick={this.handlePick}
+        />
         <Options
           options={options}
           handleDeleteOptions={this.handleDeleteOptions}
@@ -42,16 +52,12 @@ class Header extends Component {
 
 class Action extends Component {
 
-  handlePick() {
-    alert('Handle pick button clicked!!!');
-  }
-
   render() {
-    const { hasOptions } = this.props;
+    const { hasOptions, handlePick } = this.props;
     return (
       <div>
         <button 
-          onClick={this.handlePick}
+          onClick={handlePick}
           disabled={!hasOptions}
         >
           What should I do?
