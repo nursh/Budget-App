@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "babel src/app.js -w --out-file public/scripts/app.js",
-    "build:it:visible": "babel src/playground/build-it-visible.js -w --out-file public/scripts/app.js"
+    "build:it:visible": "babel src/playground/build-it-visible.js -w --out-file public/scripts/app.js",
+    "build:counter": "babel src/playground/counter.js -w --out-file public/scripts/app.js"
   },
   "author": "nur-sh",
   "license": "ISC",
