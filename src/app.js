@@ -2,15 +2,26 @@ const { Component } = React;
 const { render } = ReactDOM;
 
 class IndecisionApp extends Component {
+  state = {
+    options: ['uno', 'dos', 'tres'],
+  }
+
+  handleDeleteOptions = () => {
+    this.setState(() => ({ options: [] }));
+  }
+
   render() {
     const title = 'Indecision App';
     const subtitle = 'Put your hands in the life of a computer';
-    const options = ['uno', 'dos', 'tres'];
+    const { options } = this.state;
     return (
       <div>
         <Header title={title} subtitle={subtitle} />
-        <Action />
-        <Options options={options} />
+        <Action hasOptions={options.length > 0} />
+        <Options
+          options={options}
+          handleDeleteOptions={this.handleDeleteOptions}
+        />
         <AddOption />
       </div>
     );
@@ -36,9 +47,15 @@ class Action extends Component {
   }
 
   render() {
+    const { hasOptions } = this.props;
     return (
       <div>
-        <button onClick={this.handlePick}>What should I do?</button>
+        <button 
+          onClick={this.handlePick}
+          disabled={!hasOptions}
+        >
+          What should I do?
+        </button>
       </div>
     )
   }
@@ -46,15 +63,11 @@ class Action extends Component {
 
 class Options extends Component {
 
-  handleRemoveAll = () => {
-    alert('Removing all options!!!');
-  }
-
   render() {
-    const { options } = this.props;
+    const { options, handleDeleteOptions } = this.props;
     return (
       <div>
-        <button onClick={this.handleRemoveAll}>Remove all</button>
+        <button onClick={handleDeleteOptions}>Remove all</button>
         { options.map(option => <Option key={option} option={option}/>) }
       </div>
     );
