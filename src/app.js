@@ -3,7 +3,7 @@ const { render } = ReactDOM;
 
 class IndecisionApp extends Component {
   state = {
-    options: ['uno', 'dos', 'tres'],
+    options: [],
   }
 
   handleDeleteOptions = () => {
@@ -15,6 +15,18 @@ class IndecisionApp extends Component {
     const randomNum = Math.floor(Math.random() * options.length);
     const option = options[randomNum];
     alert(option);
+  }
+
+  handleAddOption = option => {
+    if (!option) {
+      return 'Enter valid value to add item';
+    } else if (this.state.options.indexOf(option) > -1) {
+      return `${option} already exists`;
+    }
+
+    this.setState((prevState) => ({
+      options: [...prevState.options, option],
+    }));
   }
 
   render() {
@@ -32,7 +44,9 @@ class IndecisionApp extends Component {
           options={options}
           handleDeleteOptions={this.handleDeleteOptions}
         />
-        <AddOption />
+        <AddOption
+          handleAddOption={this.handleAddOption}
+        />
       </div>
     );
   }
@@ -93,15 +107,25 @@ class Option extends Component {
 
 class AddOption extends Component {
 
-  handleAddOption(evt) {
+  state = {
+    error: '',
+  }
+
+  handleAddOption = (evt) => {
     evt.preventDefault();
+    const { handleAddOption } = this.props;
     const option = evt.target.elements.option.value.trim();
-    if (option) alert(option);
+    const error = handleAddOption(option);
+    evt.target.elements.option.value = '';
+    this.setState(() => ({
+      error,
+    }))
   }
 
   render() {
     return (
       <div>
+        { this.state.error && <p>{this.state.error}</p> }
         <form onSubmit={this.handleAddOption}>
           <input type="text" placeholder="Add option" name="option"/>
           <button>Add option</button>
