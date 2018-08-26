@@ -10,6 +10,13 @@ class IndecisionApp extends Component {
     this.setState(() => ({ options: [] }));
   }
 
+  handleDeleteOption = option => {
+    this.setState((prevState) => ({
+        options: prevState.options.filter(opt => opt !== option)
+      })
+    );
+  }
+
   handlePick = () => {
     const { options } = this.state;
     const randomNum = Math.floor(Math.random() * options.length);
@@ -34,7 +41,7 @@ class IndecisionApp extends Component {
     const { options } = this.state;
     return (
       <div>
-        <Header title={title} subtitle={subtitle} />
+        <Header subtitle={subtitle} />
         <Action
           hasOptions={options.length > 0} 
           handlePick={this.handlePick}
@@ -42,6 +49,7 @@ class IndecisionApp extends Component {
         <Options
           options={options}
           handleDeleteOptions={this.handleDeleteOptions}
+          handleDeleteOption={this.handleDeleteOption}
         />
         <AddOption
           handleAddOption={this.handleAddOption}
@@ -65,7 +73,7 @@ Header.defaultProps = {
 };
 
 const Action = (props) => {
-  const { hasOptions, handlePick } = this.props;
+  const { hasOptions, handlePick } = props;
   return (
     <div>
       <button 
@@ -78,22 +86,32 @@ const Action = (props) => {
   )
 }
 
-const Options = () => {
-  const { options, handleDeleteOptions } = this.props;
+const Options = (props) => {
+  const { options, handleDeleteOptions, handleDeleteOption } = props;
   return (
     <div>
       <button onClick={handleDeleteOptions}>Remove all</button>
-      { options.map(option => <Option key={option} option={option}/>) }
+      { options.map(option => 
+        <Option 
+          key={option}
+          option={option}
+          handleDeleteOption={handleDeleteOption}
+        />) 
+      }
     </div>
   );
 }
 
 
-const Option = () => {
-  const { option } = this.props;
+const Option = (props) => {
+  const { option, handleDeleteOption } = props;
   return (
     <div>
-      <p>{option}</p>
+      {option}
+      <button
+        onClick={(e) => handleDeleteOption(option)}>
+        Remove
+      </button>
     </div>
   );
 }
