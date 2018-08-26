@@ -4,7 +4,7 @@ const app = document.getElementById('app');
 
 class Counter extends Component {
   state = {
-    count: this.props.count,
+    count: 0,
   }
 
   addOne = () => {
@@ -23,6 +23,18 @@ class Counter extends Component {
     this.setState(() => ({ count: 0 }));
   }
 
+  componentDidMount() {
+    const num = localStorage.getItem('count');
+    const count = parseInt(num, 10);
+
+    if (!isNaN(count)) this.setState(() => ({ count }))
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.count !== this.state.count)
+      localStorage.setItem('count', this.state.count);
+  }
+
   render() {
     return (
       <div>
@@ -34,10 +46,6 @@ class Counter extends Component {
       </div>
     );
   }
-}
-
-Counter.defaultProps = {
-  count: 0,
 }
 
 render(<Counter />, app);
