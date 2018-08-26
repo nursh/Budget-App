@@ -65,6 +65,16 @@ var IndecisionApp = function (_Component) {
   }
 
   _createClass(IndecisionApp, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      console.log('Fetching Data');
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      console.log('Do something before unmounting data');
+    }
+  }, {
     key: 'render',
     value: function render() {
       var subtitle = 'Put your hands in the life of a computer';

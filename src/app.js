@@ -17,6 +17,14 @@ class IndecisionApp extends Component {
     );
   }
 
+  componentDidMount() {
+    console.log('Fetching Data');
+  }
+
+  componentWillUnmount() {
+    console.log('Do something before unmounting data');
+  }
+
   handlePick = () => {
     const { options } = this.state;
     const randomNum = Math.floor(Math.random() * options.length);
