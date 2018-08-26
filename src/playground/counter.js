@@ -4,7 +4,7 @@ const app = document.getElementById('app');
 
 class Counter extends Component {
   state = {
-    count: 0,
+    count: this.props.count,
   }
 
   addOne = () => {
@@ -34,6 +34,10 @@ class Counter extends Component {
       </div>
     );
   }
+}
+
+Counter.defaultProps = {
+  count: 0,
 }
 
 render(<Counter />, app);

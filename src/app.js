@@ -30,7 +30,6 @@ class IndecisionApp extends Component {
   }
 
   render() {
-    const title = 'Indecision App';
     const subtitle = 'Put your hands in the life of a computer';
     const { options } = this.state;
     return (
@@ -56,10 +55,14 @@ const Header = (props) => {
   return (
     <div>
       <h1>{props.title}</h1>
-      <h2>{props.subtitle}</h2>
+      { props.subtitle && <h2>{props.subtitle}</h2> }
     </div>
   );
 }
+
+Header.defaultProps = {
+  title: 'Indecision App',
+};
 
 const Action = (props) => {
   const { hasOptions, handlePick } = this.props;
