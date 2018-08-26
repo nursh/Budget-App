@@ -67,7 +67,22 @@ var IndecisionApp = function (_Component) {
   _createClass(IndecisionApp, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-      console.log('Fetching Data');
+      try {
+        var json = localStorage.getItem('options');
+        var options = JSON.parse(json);
+
+        if (options) this.setState(function () {
+          return { options: options };
+        });
+      } catch (e) {}
+    }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate(prevProps, prevState) {
+      if (prevState.options.length !== this.state.options.length) {
+        var json = JSON.stringify(this.state.options);
+        localStorage.setItem('options', json);
+      }
     }
   }, {
     key: 'componentWillUnmount',
@@ -155,6 +170,11 @@ var Options = function Options(props) {
       { onClick: handleDeleteOptions },
       'Remove all'
     ),
+    options.length === 0 && React.createElement(
+      'p',
+      null,
+      'Please add an option'
+    ),
     options.map(function (option) {
       return React.createElement(Option, {
         key: option,
@@ -206,7 +226,8 @@ var AddOption = function (_Component2) {
 
       var option = evt.target.elements.option.value.trim();
       var error = handleAddOption(option);
-      evt.target.elements.option.value = '';
+
+      if (!error) evt.target.elements.option.value = '';
       _this2.setState(function () {
         return {
           error: error
