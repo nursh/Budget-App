@@ -1,5 +1,3 @@
-const { Component } = React;
-const { render } = ReactDOM;
 
 class IndecisionApp extends Component {
   state = {

@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { render } from 'react-dom';
 
-const Template = () => (
-  <div>
-    Testing 1, 2, 3...
-  </div>
+import IndecisionApp from './components/IndecisionApp';
+
+
+const App = () => (
+  <IndecisionApp />
 )
 
-render(<Template />, document.getElementById('app'));
+render(<App />, document.getElementById('app'));
