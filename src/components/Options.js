@@ -11,10 +11,11 @@ const Options = (props) => {
         <button className="button button--link" onClick={handleDeleteOptions}>Remove all</button>
       </div>
       { options.length === 0 && <p className="widget__message">Please add an option</p>}
-      { options.map(option => 
+      { options.map((option, index) => 
         <Option 
           key={option}
           option={option}
+          count={index + 1}
           handleDeleteOption={handleDeleteOption}
         />) 
       }
