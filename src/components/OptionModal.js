@@ -9,10 +9,12 @@ const OptionModal = (props) => {
       contentLabel="Selected Option"
       onRequestClose={closeModal}
       ariaHideApp={false}
+      closeTimeoutMS={200}
+      className="modal"
     >
-      <h3>Selected Option</h3>
-      {selectedOption && <p>{selectedOption}</p>}
-      <button onClick={closeModal}>Close</button>
+      <h3 className="modal__title">Selected Option</h3>
+      {selectedOption && <p className="modal__body">{selectedOption}</p>}
+      <button className="button" onClick={closeModal}>Close</button>
     </Modal>
   )
 }
