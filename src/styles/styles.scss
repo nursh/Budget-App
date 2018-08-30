@@ -1,0 +1,8 @@
+@import "base/base";
+@import "base/variables";
+
+@import "components/header";
+
+body {
+  background-color: $brand-color;
+}

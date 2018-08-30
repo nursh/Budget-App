@@ -2,17 +2,21 @@
   "name": "budget-app",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "build": "webpack",
-    "dev-server": "webpack-dev-server --mode=development"
+    "dev-server": "nodemon --watch webpack.config.js --exec \"webpack-dev-server --mode=development\""
   },
   "author": "nur-sh",
   "license": "ISC",
   "dependencies": {
+    "css-loader": "^1.0.0",
+    "node-sass": "^4.9.3",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-modal": "^3.5.1",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.0",
     "validator": "^10.7.0",
     "webpack": "^4.17.1"
   },
@@ -24,6 +28,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "live-server": "^1.2.0",
+    "nodemon": "^1.18.4",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.6"
   }
