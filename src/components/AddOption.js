@@ -21,9 +21,9 @@ export default class AddOption extends Component {
   render() {
     return (
       <div>
-        { this.state.error && <p>{this.state.error}</p> }
-        <form onSubmit={this.handleAddOption}>
-          <input type="text" placeholder="Add option" name="option"/>
+        { this.state.error && <p className="add-option__error">{this.state.error}</p> }
+        <form className="add-option" onSubmit={this.handleAddOption}>
+          <input className="add-option__input" type="text" placeholder="Add option" name="option"/>
           <button className="button">Add option</button>
         </form>
       </div>
