@@ -16,3 +16,11 @@ body {
   box-sizing: border-box;
   background-color: $dark-blue;
 }
+
+button {
+  cursor: pointer;
+
+  &:disabled {
+    cursor: default;
+  }
+}

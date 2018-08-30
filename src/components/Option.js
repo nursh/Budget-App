@@ -6,7 +6,9 @@ const Option = (props) => {
     <div>
       {option}
       <button
-        onClick={(e) => handleDeleteOption(option)}>
+        className="button button--link"
+        onClick={(e) => handleDeleteOption(option)}
+      >
         Remove
       </button>
     </div>
