@@ -5,12 +5,18 @@
   font-weight: bold;
   font-size: $l-size;
   color: white;
-  margin-bottom: $xl-size;
+  margin-bottom: $m-size;
   padding: 2.4rem;
   width: 100%;
 
   &:disabled {
     opacity: 0.5;
+  }
+}
+
+@media (min-width: $desktop-breakpoint) {
+  .big-button {
+    margin-bottom: $xl-size;
   }
 }
 
